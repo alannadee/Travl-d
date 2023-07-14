@@ -19,7 +19,7 @@ def login():
             if check_password_hash(user.password, password):
                 flash("Logged in!", category='success')
                 login_user(user, remember=True)
-                return redirect(url_for('views.home'))
+                return redirect(url_for('views.blog'))
             else:
                 flash('Password is incorrect.', category='error')
         else:
@@ -31,7 +31,7 @@ def login():
 @auth.route("/sign-up", methods=['GET', 'POST'])
 def sign_up():
     if current_user.is_authenticated: 
-        return redirect(url_for("views.home"))
+        return redirect(url_for("views.blog"))
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = generate_password_hash((form.password.data), method='sha256')

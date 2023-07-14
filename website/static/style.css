@@ -26,6 +26,7 @@
     --bs-accent: #db504a;
     --bs-maintext: #120309;
     --bs-border: #fef5ed;
+    --bs-muted: #f2a8a5;
 
     --bs-font-headings: "Bebas Neue";
     --bs-font-sans-serif:"Inter", sans-serif;
@@ -50,7 +51,7 @@ body{
     background-color:var(--bs-light);
     -webkit-text-size-adjust:100%;
     -webkit-tap-highlight-color:transparent;
-    color: var(--bs-primary)
+    color: var(--bs-light)
 }
 hr{
     margin:1rem 0;
@@ -176,11 +177,20 @@ sup{
     top:-.5em
 }
 a{
-    color:#0d6efd;
+    color: var(--bs-light);
     text-decoration:underline
 }
+
+.a-light{
+    color: var(--bs-muted);
+}
+
+.a-light:hover{
+    color: var(--bs-accent);
+}
+
 a:hover{
-    color:#0a58ca
+    color:var(--bs-muted);
 }
 a:not([href]):not([class]),a:not([href]):not([class]):hover{
     color:inherit;
@@ -1742,11 +1752,11 @@ progress{
     cursor:pointer
 }
 .form-control:focus{
-    color:#212529;
+    /*color:#212529;
     background-color:#fff;
-    border-color:#86b7fe;
+    /*border-color:#86b7fe;
     outline:0;
-    box-shadow:0 0 0 .25rem rgba(13,110,253,.25)
+    box-shadow:0 0 0 .25rem rgba(13,110,253,.25)*/
 }
 .form-control::-webkit-date-and-time-value{
     height:1.5em
@@ -3641,10 +3651,10 @@ textarea.form-control-lg{
     flex-direction:column;
     min-width:0;
     word-wrap:break-word;
-    background-color:#fff;
-    background-clip:border-box;
-    border:1px solid var(--bs-border);
-    border-radius:.25rem
+    background-color:var(--bs-light);
+
+    border:1px solid var(--bs-accent);
+    border-radius:25px
 }
 .card>hr{
     margin-right:0;
@@ -3694,19 +3704,26 @@ textarea.form-control-lg{
 .card-header{
     padding:.5rem 1rem;
     margin-bottom:0;
-    background-color:rgba(0,0,0,.03);
-    border-bottom:1px solid rgba(0,0,0,.125)
+    background-color:var(--bs-accent);
+    border-bottom:1px solid  rgba(0,0,0,.125);
+    border-radius: 25px;
 }
 .card-header:first-child{
-    border-radius:calc(.25rem - 1px) calc(.25rem - 1px) 0 0
+    border-radius:calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
 }
 .card-footer{
     padding:.5rem 1rem;
-    background-color:rgba(0,0,0,.03);
-    border-top:1px solid rgba(0,0,0,.125)
+    background-color:var(--bs-accent);
+    border-top:1px solid rgba(0,0,0,.125);
+    border-radius: 25px;
+    
 }
 .card-footer:last-child{
-    border-radius:0 0 calc(.25rem - 1px) calc(.25rem - 1px)
+    border-radius:0 0 calc(.25rem - 1px) calc(.25rem - 1px);
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
 .card-header-tabs{
     margin-right:-.5rem;
@@ -4004,7 +4021,7 @@ textarea.form-control-lg{
     padding:1rem 1rem;
     margin-bottom:1rem;
     border:1px solid transparent;
-    border-radius:.25rem
+    border-radius:.25rem;
 }
 .alert-heading{
     color:inherit
@@ -6315,10 +6332,10 @@ textarea.form-control-lg{
     color:#dc3545!important
 }
 .text-light{
-    color:#f8f9fa!important
+    color: var(--bs-light)!important
 }
 .text-dark{
-    color:#212529!important
+    color:var(--bs-dark)!important
 }
 .text-white{
     color:#fff!important
@@ -6327,7 +6344,7 @@ textarea.form-control-lg{
     color:#212529!important
 }
 .text-muted{
-    color:#6c757d!important
+    color: var(--bs-muted)!important
 }
 .text-black-50{
     color:rgba(0,0,0,.5)!important
@@ -6337,6 +6354,10 @@ textarea.form-control-lg{
 }
 .text-reset{
     color:inherit!important
+}
+
+.text-italic{
+    font-style: italic;
 }
 .bg-primary{
     background-color:var(--bs-primary)!important
