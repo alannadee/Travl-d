@@ -53,6 +53,12 @@ body{
     -webkit-tap-highlight-color:transparent;
     color: var(--bs-light)
 }
+
+.article-img {
+    height: 65px;
+    width: 65px; 
+    margin: 16px;
+}
 hr{
     margin:1rem 0;
     color:inherit;
