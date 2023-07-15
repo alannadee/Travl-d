@@ -46,7 +46,7 @@ body{
     margin:0;
     font-size:1rem;
     font-weight:400;
-    line-height:1.5;
+    line-height:1;
     font-family: var(--bs-font-sans-serif);
     background-color:var(--bs-light);
     -webkit-text-size-adjust:100%;
@@ -58,6 +58,17 @@ body{
     height: 65px;
     width: 65px; 
     margin: 16px;
+}
+
+.post-title {
+    font-weight: 1000;
+    line-height: 1.2;
+} 
+
+.img-sml {
+    height: 30px;
+    width: 30px;
+    margin: 6px;
 }
 hr{
     margin:1rem 0;

@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block title %}Home{% endblock%}
+{% extends "base.html" %} {% block title %}Update Post{% endblock%}
 {% block content %} 
 <div class="content-section"><div class="container-home">
     <img class="mb-5 container-homeimg" src="{{url_for('static',filename='images/' + 'logo.png')}}" width="500px">
@@ -6,7 +6,7 @@
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <h1 class="border-bottom mb-4 ms-10 me-10">Create a Post</h1>
+                <h1 class="border-bottom mb-4 ms-10 me-10">Update Post</h1>
                 <div class="form-group ms-10 me-10">
                     {{ form.title.label(class="form-control-label") }}
     
