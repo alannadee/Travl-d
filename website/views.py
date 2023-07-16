@@ -12,13 +12,13 @@ from .forms import UdateAccountForm, RegistrationForm, PostForm
 views = Blueprint("views", __name__)
 
 
-
+@views.route("/")
 @views.route("/home")
 def home():
     posts = Post.query.all()
     return render_template("home.html", user=current_user, posts=posts)
 
-@views.route("/")
+
 @views.route("/blog")
 @login_required
 def blog():
@@ -50,7 +50,7 @@ def delete_post(id):
 
     if not post:
         flash("Post does not exist.", category='error')
-    elif current_user.id != post.id:
+    elif current_user.id != post.author:
         flash('You do not have permission to delete this post.', category='error')
     else:
         db.session.delete(post)
@@ -176,7 +176,7 @@ def update_post(id):
         flash('Post Updated!', category='success')
         page = request.args.get('page', 1, type=int)
         posts = Post.query.order_by(Post.date_created.desc()).paginate(page=page, per_page=4)
-        return render_template("blog.html", user=current_user, posts=posts)
+        return redirect(url_for('views.blog'))
     elif request.method == 'GET':
         form.title.data = post.title
         form.text.data = post.text

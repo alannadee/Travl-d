@@ -3,10 +3,46 @@
 
 
 <div class="container-home">
-    <img class="mb-5 container-homeimg" src="{{url_for('static',filename='images/' + 'logo.png')}}" width="500px">
-    <div class="container-inv">
-        <h1 class="me-5 mx-5">test</h1>
-    </div>
-    <h1>HI</h1>
+    <div class="slideshow-container">
+      <img class="mb-5 container-homeimg" src="{{url_for('static',filename='images/' + 'logo.png')}}" width="700px">
+      <a class="btn-signup btn" href="/sign-up">Join Now</a>
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 3</div>
+          <img src="{{url_for('static',filename='images/' + '1.png')}}" style="width:100%">
+          
+        </div>
+      
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 3</div>
+          <img src="{{url_for('static',filename='images/' + '2.png')}}" style="width:100%">
+          
+        </div>
+      
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 3</div>
+          <img src="{{url_for('static',filename='images/' + '3.png')}}" style="width:100%">
+          
+        </div>
+      
+  
+</div>
+<div class="container container-fluid mt-100 mb-100">
+  <h1>Who are we?</h1>
+  <p class="p-home">
+    Travelling may seem like a hassle. Sometimes. But why should it be so hard when there are so many people flying out daily? What if there was some way that we could easily 
+    share this worldly jar of expertise? 
+    <br/>
+    <br/>
+    Travl'd was made just for that. 
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac cursus justo. Quisque augue ex, vehicula quis tincidunt at, blandit ac mauris. Nulla tempor mauris magna, sed porta mauris hendrerit ut. Proin consequat nulla ut eros pharetra fermentum. Vestibulum quis hendrerit lorem, sed condimentum lorem. Fusce ut facilisis ipsum, nec semper nisi. Cras nisl ex, iaculis in velit in, dictum pulvinar nisi. Proin faucibus vulputate cursus. Vestibulum nisl dui, blandit a odio in, interdum tristique felis. Ut ac eleifend ante. Sed ullamcorper, velit a semper dapibus, erat ligula rutrum nunc, quis gravida erat nisl a magna. Maecenas eleifend rhoncus viverra.
+
+
+  </p>
+  <br/>
+  <br/>
+  <br/>
+
 </div>
 {% endblock %}
+

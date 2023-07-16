@@ -51,7 +51,38 @@ body{
     background-color:var(--bs-light);
     -webkit-text-size-adjust:100%;
     -webkit-tap-highlight-color:transparent;
-    color: var(--bs-light)
+    color: var(--bs-light);
+    height: 1000px;
+}
+
+.post-username{
+    left: 0;
+    position: absolute;
+    margin-left: 70px;
+}
+
+.nav-right {
+    position: absolute;
+    float: right;
+    margin-right: 10px;
+    right: 0;
+    display: flex;
+}
+
+.dark {
+    color: var(--bs-dark) !important;
+}
+
+.accent {
+    color: var(--bs-accent) !important;
+}
+
+.secondary {
+    color: var(--bs-secondary) !important;
+}
+
+.light {
+    color: var(--bs-light) !important;
 }
 
 .article-img {
@@ -89,6 +120,10 @@ hr:not([size]){
     color: var(--bs-accent);
     text-align: left
 
+}
+
+.left-align {
+    text-align: left
 }
 
 .h2,.h3,.h4,.h5,.h6,h2,h3,h4,h5,h6{
@@ -138,6 +173,13 @@ hr:not([size]){
 p{
     margin-top:0;
     margin-bottom:1rem
+}
+
+.p-home{
+    margin-top:0;
+    line-height: 1.5;
+    text-align: justify;
+    
 }
 abbr[data-bs-original-title],abbr[title]{
     -webkit-text-decoration:underline dotted;
@@ -206,6 +248,13 @@ a{
     color: var(--bs-accent);
 }
 
+.a-dark {
+    color: var(--bs-accent);
+}
+
+.a-dark:hover{
+    color: var(--bs-muted)
+}
 a:hover{
     color:var(--bs-muted);
 }
@@ -231,6 +280,20 @@ pre code{
     color:inherit;
     word-break:normal
 }
+
+footer{
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    background-color: var(--bs-dark);
+    height: 50px;
+    width: 100%;
+    padding-top: 20px;
+    text-align: center;
+    color: grey;
+}
+
 code{
     font-size:.875em;
     color:#d63384;
@@ -502,7 +565,7 @@ progress{
     color:#6c757d
 }
 .container,.container-fluid,.container-lg,.container-md,.container-sm,.container-xl,.container-xxl{
-    width:100%;
+    min-width: 100vh;
     padding-right:var(--bs-gutter-x,.75rem);
     padding-left:var(--bs-gutter-x,.75rem);
     margin-right:auto;
@@ -531,9 +594,10 @@ progress{
 
 .container-homeimg {
     position: absolute;
-    bottom: 30px;
+    bottom: 130px;
     margin-top: 600;
-    margin-left: 90px;
+    margin-left: 110px;
+    z-index: 3;
 }
 
 
@@ -541,8 +605,7 @@ progress{
     color: var(--bs-accent);
     background-color: var(--bs-accent);
     margin: 0 !important;
-    min-width: 100vw;
-    max-width: none !important;
+    width: 100%;
     height: 650px;
     position: absolute;
     left: 0;
@@ -2906,6 +2969,33 @@ textarea.form-control-lg{
     font-size:.875rem;
     border-radius:.2rem
 }
+
+.btn-signup {
+    width: 300px;
+    height: 60px;
+    border-radius: 25px;
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    background-color: var(--bs-accent);
+    text-align: center !important;
+    padding: 13px;
+    margin-left: 110px;
+    margin-bottom: 80px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--bs-light);
+    border-width: 1px;
+    border-color: var(--bs-light);
+    font-size: 20px;
+}
+
+.btn-signup:hover {
+    color: var(--bs-light);
+    opacity: 0.9;
+}
+
 .fade{
     transition:opacity .15s linear
 }
@@ -3347,6 +3437,8 @@ textarea.form-control-lg{
     color:#fff;
     background-color:#0d6efd
 }
+
+
 .nav-fill .nav-item,.nav-fill>.nav-link{
     flex:1 1 auto;
     text-align:center
@@ -3366,13 +3458,15 @@ textarea.form-control-lg{
     display:block
 }
 .navbar{
-    position:relative;
-    display:flex;
-    flex-wrap:wrap;
+    position:sticky;
+    top: 0;
+    align-self: flex-start;
     align-items:center;
     justify-content:space-between;
     padding-top:.5rem;
-    padding-bottom:.5rem
+    padding-bottom:.5rem;
+    z-index: 10;
+    
 }
 .navbar>.container,.navbar>.container-fluid,.navbar>.container-lg,.navbar>.container-md,.navbar>.container-sm,.navbar>.container-xl,.navbar>.container-xxl{
     display:flex;
@@ -6026,6 +6120,11 @@ textarea.form-control-lg{
 .mt-auto{
     margin-top:auto!important
 }
+
+.mt-100{
+    margin-top: 100px;
+
+}
 .me-0{
     margin-right:0!important
 }
@@ -6068,6 +6167,10 @@ textarea.form-control-lg{
 }
 .mb-5{
     margin-bottom:3rem!important
+}
+
+.mb-100{
+    margin-bottom: 100px;
 }
 
 .mb-10{
@@ -9002,4 +9105,93 @@ textarea.form-control-lg{
         display:none!important
     }
 }
-/*# sourceMappingURL=bootstrap.min.css.map */
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 6s;
+}
+
+@keyframes fade {
+  
+  from {opacity: 0.7}
+  to {opacity: 1}
+  
+}
