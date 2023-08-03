@@ -1,12 +1,15 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
   %}
-  <h1 align="center">{% block header %}Posts{% endblock %}</h1>
+  <!-- <h1 align="center" class="page_header accent">{% block header %}Recent Posts{% endblock %}</h1> -->
+  <div class="container-base">
+  <div class="container-posts">
   <div id="posts">
+
     {% for post in posts %}
     <div class="card">
       <div class="card-header d-flex justify-content-between align-items-center">
         <img class="rounded-circle img-sml" src="{{ url_for('static', filename='profile_pics/'+ post.user.image_file)}}">
-        <a class="post-username" href="/posts/{{post.user.username}}">{{post.user.username}}</a>
+        <a class="post-username" href="/account/{{post.user.username}}">{{post.user.username}}</a>
         <div>
           <span id="likes-count-{{post.id}}">
           {{ post.likes|length }}</span> 
@@ -26,7 +29,7 @@
           <div class="btn-group">
             <button
               type="button"
-              class="btn btn-sm btn-primary dropdown-toggle"
+              class="btn btn-sm btn-dark dropdown-toggle"
               data-bs-toggle="dropdown"
             ></button>
             <ul class="dropdown-menu">
@@ -108,32 +111,42 @@
             class="form-control"
             placeholder="Comment something!"
           />
-          <button type="submit" class="btn btn-primary">Comment</button>
+          <button type="submit" class="btn btn-dark">Comment</button>
         </form>
       </div>
       <div class="card-footer text-muted">{{post.date_created}}</div>
     </div>
-    <br/ > {% endfor %}
+    <br/> {% endfor %}
   </div>
-{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-  {% if page_num %}
-      {% if posts.page == page_num %}
-        <a class="btn btn-outline-info mb-4" href="{{ url_for('views.blog', page=page_num)}}">{{ page_num }}</a>
-      {% else %}
-        <a class="btn btn-outline-info mb-4" href="{{ url_for('views.blog', page=page_num)}}">{{ page_num }}</a>
-      {% endif %}
-  {% else %}
-      ...
-  {% endif %}
-{% endfor %}
+  
+</div>
+<div class="container-sidebar">
+  <div class="card-sidebar">
+    <div class="card-header sidebar-header text-accent text-heading"> HOT TOPICS </div>
+    <div class="card-body text-dark">orem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nisi justo. Nulla ac ornare sapien. Integer consequat, augue at rutrum consectetur, odio nisl hendrerit mi, eu pretium erat dui sit amet metus. Phasellus congue massa a feugiat pharetra. Duis nec purus a arcu mollis fermentum a vel nisi. Ut vehicula eros sit amet tempor tristique. Proin augue leo, molestie vel ultricies vitae, vulputate vitae tellus. Nunc arcu urna, efficitur id rhoncus scelerisque, consectetur non ex. Nulla rhoncus pellentesque congue.
+
+      Aenean finibus pretium scelerisque. Nunc egestas accumsan lacus, malesuada sagittis dolor condimentum quis. Donec viverra placerat orci, ut pellentesque elit fringilla sit amet. Fusce ipsum neque, congue eu iaculis sed, facilisis non leo. Nam dapibus erat malesuada, tempus metus a, ornare eros. Proin non nibh quam. Nam id purus eu diam venenatis aliquet a sit amet ex. Vestibulum ut euismod dolor, vitae efficitur turpis. Donec ac justo aliquet libero egestas sodales. Maecenas suscipit turpis eros, et eleifend eros accumsan ac. Donec at vulputate nisl, sit amet sodales nisl. Suspendisse laoreet, risus sed condimentum commodo, metus felis bibendum enim, in fringilla nisi mi vel nisl.
+      
+      Duis in nulla nec nunc sodales molestie sed quis diam. Integer commodo ultricies lorem volutpat convallis. Sed hendrerit consequat interdum. Vestibulum tempor consequat dui id viverra. Aliquam ut velit eget arcu semper dictum. Cras sagittis sodales pretium. Proin porttitor ligula nec lectus vehicula, a cursus arcu pellentesque. Vestibulum pretium sollicitudin libero ac vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam sagittis lacus in augue congue luctus. Nulla eget rhoncus metus. Donec vehicula neque eu ligula imperdiet, eget gravida ex pretium. Sed eu interdum justo. Integer sed augue posuere, efficitur libero maximus, blandit diam. Vestibulum porttitor odio in facilisis ultricies. Phasellus tellus erat, dapibus vel luctus vitae, finibus sed lorem. Donec pulvinar scelerisque.</div>
+    <div class="card-footer sidebar-footer"></div>
+  </div>
+</div>
+</div>
+<div align="center">
+  {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+    {% if page_num %}
+        {% if posts.page == page_num %}
+          <a class="btn btn-dark center" href="{{ url_for('views.blog', page=page_num)}}">{{ page_num }}</a>
+        {% else %}
+          <a class="btn btn-dark center" href="{{ url_for('views.blog', page=page_num)}}">{{ page_num }}</a>
+        {% endif %}
+    {% else %}
+        ...
+    {% endif %}
+  {% endfor %}
+  </div><a class="btn-create" href="/create-post"><img src="{{ url_for('static', filename='images/' + 'add_new.png')}}" height="75px" alt="hi"></a>
 
   {% block footer %}
-  <div align="center">
-    <a href="/create-post"
-      ><button type="button" class="btn btn-primary btn-lg">
-        Create a Post
-      </button></a
-    >
-  </div>
+  
   {% endblock %} {% endblock %}
   

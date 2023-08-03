@@ -74,6 +74,20 @@ def posts(username):
     posts = Post.query.order_by(Post.date_created.desc()).paginate(page=page, per_page=4)
     return render_template("posts.html", user=current_user, posts=posts, username=username)
 
+@views.route("/account/<username>")
+@login_required
+def account(username):
+    user = User.query.filter_by(username=username).first()
+
+    if not user:
+        flash('No user with that username exists.', category='error')
+        return redirect(url_for('views.blog'))
+
+    posts = user.posts
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date_created.desc()).paginate(page=page, per_page=4)
+    return render_template("account.html", user=current_user, posts=posts, username=username)
+
 
 @views.route("/create-comment/<post_id>", methods=['POST'])
 @login_required
@@ -143,9 +157,9 @@ def save_picture(form_picture):
 
     return picture_fn
 
-@views.route("/account", methods=['GET','POST'])
+@views.route("/edit-account", methods=['GET','POST'])
 @login_required
-def account():
+def edit_account():
     form = UdateAccountForm()
     if form.validate_on_submit():
         if form.picture.data:
@@ -160,7 +174,9 @@ def account():
         form.username.data = current_user.username
         form.email.data = current_user.email
     image_file = url_for('static', filename="profile_pics/" + current_user.image_file)
-    return render_template('account.html', user=current_user, image_file=image_file, form=form)
+    return render_template('edit_account.html', user=current_user, image_file=image_file, form=form)
+
+
     
 @views.route("/update-post/<id>", methods=['GET', 'POST'])
 @login_required
@@ -183,3 +199,4 @@ def update_post(id):
         image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
 
     return render_template('create_post.html', form=form, user=current_user, post=post, image_file=image_file)
+
