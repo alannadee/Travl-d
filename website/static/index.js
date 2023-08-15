@@ -32,3 +32,11 @@ function like(postId) {
     setTimeout(showSlides, 5000); // Change image every 2 seconds
 
   }
+
+  function on() {
+    document.getElementById("overlay").style.display = "block";
+  }
+  
+  function off() {
+    document.getElementById("overlay").style.display = "none";
+  }

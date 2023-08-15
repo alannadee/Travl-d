@@ -28,6 +28,7 @@
     --bs-border: #fef5ed;
     --bs-muted: #f2a8a5;
     --bs-font-headings: "Bebas Neue";
+    --bs-font-outer: "Outfit", sans-serif;
     --bs-font-sans-serif:"Inter", sans-serif;
     --bs-font-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
     --bs-gradient:linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0))
@@ -48,21 +49,29 @@ body{
     margin:0;
     font-size:1rem;
     font-weight:400;
-    line-height:1;
     font-family: var(--bs-font-sans-serif);
     background-color:var(--bs-light);
     -webkit-text-size-adjust:100%;
     -webkit-tap-highlight-color:transparent;
     color: var(--bs-light);
+
 }
 
 .text-heading{
-    font-family: var(--bs-font-headings)
+    font-family: var(--bs-font-headings);
+    font-size: 40px !important;
 }
 .media{
     display: flex;
 }
 
+.content-section{
+    min-height: calc(100vh - 200px)
+}
+.xmark{
+    position: relative;
+    margin-left: 97%;
+}
 .page-header{
     text-align: center;
     font-size: 70px;
@@ -74,6 +83,7 @@ body{
     height: calc(19px + 2.5rem);
     text-align: center;
     font-size: 50px;
+    padding: 2px;
 }
 
 .sidebar-footer{
@@ -82,12 +92,52 @@ body{
 .nav-right {
     position: absolute;
     float: right;
-    margin-right: 10px;
-    right: 0;
+    margin-right: 10px !important;
+    right: 0 !important;
     display: flex;
 }
 
+.h1, h1 {
+    font-family:var(--bs-font-headings);
+    font-size: 70px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.55rem;
+    font-weight: normal;
+    text-align: left;
+
+}
+
+.left-align {
+    text-align: left
+}
+
+h2{
+    font-family: var(--bs-font-sans-serif);
+    color: var(--bs-dark);
+    font-size: 10px;
+    margin: 0;
+}
+
+h3{
+    font-family: var(--bs-font-outer);
+    color: var(--bs-dark);
+}
+    
+
+h4,.h5,.h6,h4,h5,h6{
+    font-family:var(--bs-font-sans-serif);
+    margin-top:0;
+    margin-bottom:.5rem;
+    font-weight:500;
+    line-height:1.2;
+    color: var(--bs-dark)
+}
+
 /* Containers */
+.content{
+    margin-left: auto;
+    margin-right: auto;
+}
 .container-back{
     width: 100%;
     height: 100%;
@@ -101,13 +151,32 @@ body{
 }
 
 .container-base{
+    padding-right:var(--bs-gutter-x,3rem);
+    padding-left:var(--bs-gutter-x,3rem);
+    margin-right:auto;
+    margin-left:auto;
+    margin-top: 2rem;
+    display: flex;
+}
+
+.container-account{
     padding-right:var(--bs-gutter-x,.75rem);
     padding-left:var(--bs-gutter-x,.75rem);
     margin-right:auto;
     margin-left:auto;
     margin-top: 2rem;
-    display: flex;
+    display: block;
+}
 
+.container-account-posts{
+    width: 100%;
+    padding: 5px;
+}
+
+.container-account-info{
+    width: 100%;
+    padding: 5px;
+    text-align: center;
 }
 
 .container-posts{
@@ -136,12 +205,13 @@ body{
 
 .container-form{
     background-color: var(--bs-light);
-    width: 40%;
+    width: 50%;
     position: absolute;
     right: 30px;
     left: auto;
     top: 50px;
     border-radius: 25px;
+    min-width: 600px;
 
 }
 
@@ -151,6 +221,7 @@ body{
     margin-top: 600;
     margin-left: 110px;
     z-index: 3;
+    margin-bottom: 3vw;
 }
 
 .container-home{
@@ -158,9 +229,49 @@ body{
     background-color: var(--bs-accent);
     margin: 0 !important;
     width: 100%;
-    height: 650px;
     position: absolute;
     left: 0;
+}
+
+#overlay{
+    display: none
+}
+.container-popup{
+    width: 100vw;
+    height: 100vh;
+    z-index: 3000;
+    left: 0;
+    position: fixed;
+    display: block;
+}
+
+.pointer{
+    cursor: pointer;
+}
+.container-overlay{
+    width: 100vw;
+    height: calc(100vh + 100px);
+    background-color: var(--bs-dark);
+    opacity: 0.3;
+    margin-top: -100px;
+    position: fixed;
+    z-index:-1;
+}
+
+.container-edit{
+    --width: 60%;
+    width: var(--width);
+    max-width: 750px;
+    height: 600px;
+    background-color: white;
+    opacity: 1 !important;
+    margin: auto;
+    margin-top: calc(( 100vh - 700px) / 2);
+    border-radius: 25px;
+    /* border:1px solid var(--bs-dark); */
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    color: var(--bs-dark);
 }
 
 .container-footer{
@@ -170,8 +281,14 @@ body{
     height: 100px;
     margin: 0;
     margin-top: 50px;
+    text-align: center;
+    padding: 30px;
+    color: rgba(300, 300, 300, 0.5) !important;
 }
 
+.mute-text{
+    color: rgba(300, 300, 300, 0.5)
+}
 
 @media (min-width:576px){
     .container,.container-sm{
@@ -255,8 +372,8 @@ body{
 /* account.html */
 
 .account-img {
-    height: 65px;
-    width: 65px; 
+    width: 7vw;
+    height: 7vw;
     margin: 16px;
 }
 
@@ -266,6 +383,55 @@ body{
     margin: 6px;
 }
 
+.account-title{
+    display: flex;
+    color: var(--bs-accent);
+    width: 100%;
+}
+
+.account-dropdown{
+    position: relative !important;
+    height: 100px;
+    margin: auto;
+    color: white;
+    border-radius: .25rem;
+}
+
+.account-header{
+    font-family: var(--bs-font-sans-serif);
+    font-weight: 2rem;
+    font-style: italic;
+    font-size: 20px;
+    margin-left: 0.5rem;
+    color: var(--bs-accent);
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.account-info{
+    text-align: justify;
+    padding: 0.5rem;
+    color: var(--bs-accent)
+}
+
+.biography{
+    font-size: 18px;
+    margin-left: 10px;
+    color: var(--bs-dark);
+    text-align: center;
+}
+
+.account-username{
+    font-family: var(--bs-font-outer);
+    color: var(--bs-accent);
+    font-size: 7vw;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 1.5%;
+    align-items: center !important;
+    font-weight: 200;
+    letter-spacing: normal;
+}
 
 /* cards */
 .card-sidebar{
@@ -310,28 +476,7 @@ hr{
 hr:not([size]){
     height:1px
 }
-.h1, h1 {
-    font-family:var(--bs-font-headings);
-    font-size: 70px;
-    text-transform: uppercase;
-    letter-spacing: 0.55rem;
-    font-weight: normal;
-    text-align: left
 
-}
-
-.left-align {
-    text-align: left
-}
-
-.h2,.h3,.h4,.h5,.h6,h2,h3,h4,h5,h6{
-    font-family:var(--bs-font-sans-serif);
-    margin-top:0;
-    margin-bottom:.5rem;
-    font-weight:500;
-    line-height:1.2;
-    color: var(--bs-dark)
-}
 
 @media (min-width:1200px){
     .h1,h1{
@@ -506,7 +651,6 @@ kbd{
     font-size:.875em;
     color:#fff;
     background-color:#212529;
-    border-radius:.2rem
 }
 kbd kbd{
     padding:0;
@@ -1942,11 +2086,11 @@ progress{
     color:#212529;
     background-color:#fff;
     background-clip:padding-box;
-    border:1px solid #ced4da;
+    border: 1px solid #ced4da;
+    
     -webkit-appearance:none;
     -moz-appearance:none;
     appearance:none;
-    border-radius:.25rem;
     transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out
 }
 @media (prefers-reduced-motion:reduce){
@@ -2415,6 +2559,7 @@ textarea.form-control-lg{
     flex-wrap:wrap;
     align-items:stretch;
     width:100%
+    
 }
 .input-group>.form-control,.input-group>.form-select{
     position:relative;
@@ -2444,17 +2589,14 @@ textarea.form-control-lg{
     white-space:nowrap;
     background-color:#e9ecef;
     border:1px solid #ced4da;
-    border-radius:.25rem
 }
 .input-group-lg>.btn,.input-group-lg>.form-control,.input-group-lg>.form-select,.input-group-lg>.input-group-text{
     padding:.5rem 1rem;
     font-size:1.25rem;
-    border-radius:.3rem
 }
 .input-group-sm>.btn,.input-group-sm>.form-control,.input-group-sm>.form-select,.input-group-sm>.input-group-text{
     padding:.25rem .5rem;
     font-size:.875rem;
-    border-radius:.2rem
 }
 .input-group-lg>.form-select,.input-group-sm>.form-select{
     padding-right:3rem
@@ -2634,7 +2776,6 @@ textarea.form-control-lg{
     border:1px solid transparent;
     padding:.375rem .75rem;
     font-size:1rem;
-    border-radius:.25rem;
     transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
 }
 @media (prefers-reduced-motion:reduce){
@@ -2647,7 +2788,6 @@ textarea.form-control-lg{
 }
 .btn-check:focus+.btn,.btn:focus{
     outline:0;
-    box-shadow:0 0 0 .25rem rgba(13,110,253,.25)
 }
 .btn.disabled,.btn:disabled,fieldset:disabled .btn{
     pointer-events:none;
@@ -3153,7 +3293,7 @@ textarea.form-control-lg{
     position:relative
 }
 .dropdown-toggle{
-    white-space:nowrap
+    white-space:nowrap;
 }
 .dropdown-toggle::after{
     display:inline-block;
@@ -9271,7 +9411,6 @@ textarea.form-control-lg{
 /* Slideshow container */
 .slideshow-container {
   max-width: 100%;
-  position: relative;
   margin: auto;
 }
 
@@ -9350,8 +9489,6 @@ textarea.form-control-lg{
 }
 
 @keyframes fade {
-  
   from {opacity: 0.7}
-  to {opacity: 1}
-  
+  to {opacity: 1}  
 }

@@ -26,7 +26,7 @@ class RegistrationForm(FlaskForm):
         if user:
             raise ValidationError('That email is taken. Please choose a different one.')
         
-class UdateAccountForm(FlaskForm):
+class UpdateAccountForm(FlaskForm):
     username = StringField("Username", validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField("Email", validators=[DataRequired(), Email()])
     picture = FileField("Update Profile Picture", validators=[FileAllowed(['jpg','png','jpeg'])])
@@ -47,4 +47,4 @@ class UdateAccountForm(FlaskForm):
 class PostForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     text = TextAreaField("Text", validators=[DataRequired()])
-    submit = SubmitField("Update")
+    submit = SubmitField("Create Post")

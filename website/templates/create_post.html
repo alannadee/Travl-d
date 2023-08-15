@@ -1,7 +1,6 @@
-<body class="bg-accent">
 {% extends "base.html" %} {% block title %}<h1 class="light">Home</h1>{% endblock%}
 {% block content %} 
-<div class="content-section">
+<div class="text-accent container content-section">
     
         <form method="POST" action="">
             {{ form.hidden_tag() }}
@@ -39,10 +38,9 @@
                      
             </fieldset>
             <br/>
-            <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
+            <div class="ms-10 me-10 form-group">
+                {{ form.submit(class="btn btn-dark") }}
         </form>
 
     </div>
 {% endblock %}
-</body>
